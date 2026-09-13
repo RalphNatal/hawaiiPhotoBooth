@@ -524,3 +524,109 @@
   // Exposed for the printer module below and for debugging in the console.
   window.HB_BOOTH = { hooks, get state() { return state; }, get photoUrl() { return photoUrl; }, reduceMotion };
 })();
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Printer — scroll-linked print
+// ─────────────────────────────────────────────────────────────────────────────
+// The printed photo sits inside a mask whose bottom edge is the printer's slot
+// line. translateY(100%) hides it entirely inside the printer; translateY(0)
+// is fully printed. Progress comes from the printer's position in the viewport.
+//
+// Equivalent GSAP ScrollTrigger config, for reference only — do NOT add the
+// dependency:
+//   gsap.fromTo('#printed-photo', { yPercent: 100, rotate: -1.5 }, { yPercent: 0, rotate: 0,
+//     scrollTrigger: { trigger: '#printer-stage', start: 'top 85%', end: 'top 30%', scrub: 0.5 } });
+(() => {
+  'use strict';
+  const booth = window.HB_BOOTH;
+  const stage = document.getElementById('printer-stage');
+  const photo = document.getElementById('printed-photo');
+  const watchBtn = document.getElementById('watch-print');
+  const copy = document.getElementById('print-copy');
+  if (!booth || !stage || !photo) return;
+  const reduceMotion = booth.reduceMotion;
+
+  const START = 0.85, END = 0.30;
+
+  // Progress is derived from the printer's position in the viewport, NOT
+  // absolute page scroll — that stays correct no matter how much content sits
+  // above, and survives layout changes.
+  //   START: printer top at 85% of viewport height → progress 0
+  //   END:   printer top at 30% of viewport height → progress 1
+  // Widen the gap for a slower, longer print. The stage must never be
+  // position: sticky — a stuck element's rect.top stops changing and progress
+  // freezes mid-print.
+  function printProgress() {
+    const rect = stage.getBoundingClientRect();
+    const start = window.innerHeight * START;
+    const end = window.innerHeight * END;
+    return Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
+  }
+
+  function apply() {
+    const p = printProgress();
+    photo.style.transform = `translateY(${(1 - p) * 100}%)`;
+    photo.style.rotate = `${(1 - p) * -1.5}deg`; // slight paper curl
+  }
+
+  // Apply on the animation frame after a scroll, never inside the scroll
+  // handler — scroll fires far more often than the compositor paints.
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { apply(); ticking = false; });
+  }
+
+  // The maths depends on innerHeight, so recompute on a debounced resize.
+  let resizeTimer;
+  function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(apply, 120);
+  }
+
+  function setPhoto(url) {
+    if (!url) {
+      photo.classList.add('hidden');
+      photo.removeAttribute('src');
+      return;
+    }
+    photo.src = url;
+    photo.classList.remove('hidden');
+    if (reduceMotion) {
+      photo.style.transform = 'translateY(0)';
+      photo.style.rotate = '0deg';
+    } else {
+      apply();
+    }
+  }
+
+  // On first capture, scroll to the animation's START, never to centre.
+  // Centring a 480px stage would put rect.top near the viewport middle, which
+  // evaluates to progress > 1 — the photo would already be printed before the
+  // visitor scrolled at all, and they'd have to scroll UP to see the animation.
+  function scrollToStart() {
+    requestAnimationFrame(() => {
+      const rect = stage.getBoundingClientRect();
+      const offset = reduceMotion ? window.innerHeight * 0.2 : window.innerHeight * START;
+      window.scrollTo({ top: window.scrollY + rect.top - offset, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
+
+  booth.hooks.onPhoto.push((url, { first } = {}) => {
+    setPhoto(url);
+    if (url && first) scrollToStart();
+  });
+  watchBtn.addEventListener('click', scrollToStart);
+
+  if (reduceMotion) {
+    // No scroll tracking: the print is simply out.
+    photo.style.transform = 'translateY(0)';
+    photo.style.rotate = '0deg';
+    copy.textContent = 'Take a photo and it comes out of the printer below.';
+  } else {
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    apply();
+  }
+})();
