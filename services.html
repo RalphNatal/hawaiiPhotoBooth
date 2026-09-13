@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slideshow Service | Hawaii Booths</title>
+  <meta name="description" content="The Hawaii Booths slideshow service: a seven-minute slideshow of your photos, built for you and ready to play at the event. $350.">
+  <meta property="og:type" content="product">
+  <meta property="og:title" content="Slideshow Service | Hawaii Booths">
+  <meta property="og:description" content="A seven-minute slideshow of your photos, built for you and ready to play at the event. $350.">
+  <meta property="og:image" content="https://picsum.photos/seed/hawaii-slideshow/1200/800">
+
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script src="assets/js/head.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script defer src="assets/js/shell.js"></script>
+</head>
+<body class="bg-abyss font-sans text-sand antialiased">
+
+<hb-nav active="services"></hb-nav>
+
+<main id="main">
+
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-16 md:pb-32 md:pt-24">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-7 lg:pt-4">
+        <h1 class="max-w-[16ch] font-display text-4xl font-medium leading-[1.08] text-shell md:text-6xl">Slideshow Service</h1>
+        <p class="mt-6 max-w-[52ch] text-lg leading-relaxed text-sand/80 md:text-xl">A seven-minute slideshow of your photos, built for you and delivered ready to play. Send us the pictures; we handle the order, the timing and the music, and you press play on the night.</p>
+        <p class="mt-8 flex items-baseline gap-4">
+          <span class="font-display text-[2.5rem] font-medium leading-none tabular-nums text-shell">$350</span>
+          <span class="text-sm tracking-[0.01em] text-sand/70">one slideshow, 7 minutes</span>
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a data-book="slideshow" href="contact.html" class="btn-primary">Book now</a>
+          <a href="contact.html" class="btn-ghost">Ask a question</a>
+        </div>
+        <p class="mt-4 text-xs tracking-[0.01em] text-sand/60">Book now opens our booking catalog in a new tab.</p>
+
+        <h2 class="mt-14 text-xl font-medium text-sand">What is included</h2>
+        <ul class="mt-4 border-b border-white/10">
+          <li class="border-t border-white/10 py-3.5">A 7-minute slideshow</li>
+          <!-- TODO(client): confirm photo count, music, delivery format and turnaround. -->
+          <li class="border-t border-white/10 py-3.5 text-sand/70">Photo count, music choices, delivery format and turnaround to be confirmed</li>
+        </ul>
+      </div>
+      <div class="lg:col-span-5">
+        <img src="https://picsum.photos/seed/hawaii-slideshow/1200/1500" width="1200" height="1500" fetchpriority="high"
+             alt="A slideshow of family photographs projected on a screen at a reception"
+             class="aspect-[4/5] w-full rounded-lg object-cover brightness-90 ring-1 ring-white/10">
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 pb-24 md:pb-32" aria-labelledby="fit-heading">
+    <h2 id="fit-heading" class="font-display text-3xl font-medium leading-[1.15] text-shell md:text-[2.5rem]">Where it fits</h2>
+    <p class="mt-5 max-w-[60ch] leading-relaxed text-sand/80">Most hosts play it during the meal or just before the speeches, when everyone is seated and looking the same way. It pairs well with the audio guest book: the slideshow shows the years before the day, and the voicemails collect what people say on it.</p>
+    <div class="mt-10 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/10 pt-10">
+      <a href="pricing.html" class="link">Compare all packages</a>
+      <a href="audio-booths.html" class="link">See the audio guest book</a>
+    </div>
+  </section>
+
+</main>
+
+<hb-footer>
+  <noscript>
+    <nav aria-label="Site" class="mx-auto max-w-6xl px-6 py-12">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="photo-booths.html">Photo booths</a></li>
+        <li><a href="video-booths.html">Video booths</a></li>
+        <li><a href="audio-booths.html">Audio guest book</a></li>
+        <li><a href="services.html">Slideshow service</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="try-it-out.html">Try the booth</a></li>
+      </ul>
+    </nav>
+  </noscript>
+</hb-footer>
+
+</body>
+</html>
