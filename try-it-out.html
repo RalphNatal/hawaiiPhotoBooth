@@ -51,8 +51,8 @@
               <!-- Mirrored so the preview behaves like a mirror. The frame overlay
                    on top is NOT mirrored, or its wordmark would read backwards. -->
               <video id="video" autoplay muted playsinline class="absolute inset-0 h-full w-full -scale-x-100 object-cover"></video>
-              <img id="frame-overlay" alt="" draggable="false" class="pointer-events-none absolute inset-0 h-full w-full select-none">
-              <img id="shot" alt="Your photo with the selected frame" class="absolute inset-0 hidden h-full w-full object-cover">
+              <img id="frame-overlay" width="1080" height="1350" alt="" draggable="false" class="pointer-events-none absolute inset-0 h-full w-full select-none">
+              <img id="shot" width="1080" height="1350" alt="Your photo with the selected frame" class="absolute inset-0 hidden h-full w-full object-cover">
               <div id="countdown" class="absolute inset-0 hidden items-center justify-center bg-abyss/30 font-display text-[9rem] leading-none text-shell" aria-live="assertive" aria-atomic="true"></div>
               <!-- The capture flash: the only opaque white on the site, held at 0.7. -->
               <div id="flash" class="pointer-events-none absolute inset-0 bg-white opacity-0" aria-hidden="true"></div>
@@ -104,7 +104,7 @@
                emerge from the slot rather than slide over the printer. -->
           <div id="photo-mask" class="absolute inset-x-0 bottom-[132px] top-0 flex items-end justify-center overflow-hidden">
             <!-- The one shadow on the site: the paper is genuinely in front of the printer. -->
-            <img id="printed-photo" alt="Your printed photo" class="hidden w-[62%] origin-bottom will-change-transform rounded-sm ring-1 ring-white/15 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)]">
+            <img id="printed-photo" width="1080" height="1350" alt="Your printed photo" class="hidden w-[62%] origin-bottom will-change-transform rounded-sm ring-1 ring-white/15 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)]">
           </div>
           <!-- Chassis: ocean fill, surf stroke, ink slot. Colours via fill-/stroke-
                utilities so they follow the tokens. Slot is 284 of 420 units ≈ 281px

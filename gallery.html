@@ -199,8 +199,8 @@
       if (show) shown++;
     });
     empty.classList.toggle('hidden', shown > 0);
-    const label = chips.find((c) => c.dataset.filter === key).textContent.trim();
-    status.textContent = key === 'all' ? `Showing all ${shown} photos` : `Showing ${shown} ${label.toLowerCase()} photo${shown === 1 ? '' : 's'}`;
+    const NOUN = { wedding: 'wedding', corporate: 'corporate event', birthday: 'birthday', school: 'school event' };
+    status.textContent = key === 'all' ? `Showing all ${shown} photos` : `Showing ${shown} ${NOUN[key]} photo${shown === 1 ? '' : 's'}`;
   }
   chips.forEach((c) => c.addEventListener('click', () => applyFilter(c.dataset.filter)));
 
