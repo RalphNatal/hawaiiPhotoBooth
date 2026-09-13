@@ -1,0 +1,25 @@
+/* assets/css/site.css — the few rules Tailwind utilities can't express.
+   Everything else on the site is composed from utilities and the component
+   classes in assets/js/head.js. Keep this file short. */
+
+/* Reserve the shell's height so nothing jumps when shell.js upgrades the
+   custom elements. 4.5rem matches the hero's min-h calc on the home page. */
+hb-nav { display: block; min-height: 4.5rem; }
+hb-footer { display: block; }
+
+/* Anchor targets shouldn't land under the sticky nav. */
+html { scroll-padding-top: 5.5rem; }
+
+/* Sections and headings balance their last line instead of leaving a widow. */
+h1, h2, h3, blockquote { text-wrap: balance; }
+
+/* Reduced motion: nothing on the site transitions or animates. The booth page
+   additionally skips the capture flash and scroll tracking in booth.js. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
