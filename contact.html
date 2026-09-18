@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Hawaii Booths</title>
+  <meta name="description" content="Ask Hawaii Booths about a photo, video or audio booth for your event. Call 1-800-805-0920, email hawaiibooths@gmail.com, or send an enquiry. Based at 2825 Ala Ilima St, Honolulu.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact | Hawaii Booths">
+  <meta property="og:description" content="Call, email, or send an enquiry about a booth for your event.">
+  <meta property="og:image" content="https://picsum.photos/seed/hawaii-hero/1200/1500">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 15 18%27%3E%3Crect x=%27.75%27 y=%27.75%27 width=%2713.5%27 height=%2716.5%27 rx=%272%27 fill=%27none%27 stroke=%27%23D9A441%27 stroke-width=%271.5%27/%3E%3Crect x=%273.5%27 y=%273.5%27 width=%278%27 height=%277.5%27 rx=%271%27 fill=%27%23D9A441%27 fill-opacity=%27.35%27/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script src="assets/js/head.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script defer src="assets/js/shell.js"></script>
+</head>
+<body class="bg-abyss font-sans text-sand antialiased">
+
+<hb-nav active="contact"></hb-nav>
+
+<main id="main">
+
+  <section class="mx-auto max-w-6xl px-6 pb-12 pt-20 md:pt-28">
+    <h1 class="max-w-[18ch] font-display text-4xl font-medium leading-[1.08] text-shell md:text-6xl">Get in touch</h1>
+    <p class="mt-6 max-w-[52ch] text-lg leading-relaxed text-sand/80 md:text-xl">Tell us about your event and we will reply within one business day. If you already know your date, the calendar is the quickest way to check it.</p>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 pb-24 md:pb-32">
+    <div class="grid gap-16 lg:grid-cols-12 lg:gap-12">
+
+      <!-- ─── Enquiry form ────────────────────────────────────────────────── -->
+      <div class="lg:col-span-7">
+        <!-- The form does not submit anywhere yet: it validates client-side and
+             shows a success state. TODO: post to Formspree, Netlify Forms, or a
+             custom endpoint in the submit handler at the bottom of the page. -->
+        <form id="enquiry-form" class="space-y-6" novalidate>
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <label for="name" class="block text-sm font-medium text-sand">Full name</label>
+              <input id="name" name="name" type="text" autocomplete="name" class="field mt-2" required aria-describedby="name-error">
+              <p id="name-error" class="mt-2 hidden text-sm text-gold" role="alert"></p>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-sand">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" class="field mt-2" required aria-describedby="email-error">
+              <p id="email-error" class="mt-2 hidden text-sm text-gold" role="alert"></p>
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-sand">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" class="field mt-2" required aria-describedby="phone-hint phone-error">
+              <p id="phone-hint" class="mt-2 text-xs tracking-[0.01em] text-sand/60">Digits, spaces and dashes are fine.</p>
+              <p id="phone-error" class="mt-2 hidden text-sm text-gold" role="alert"></p>
+            </div>
+            <div>
+              <label for="booth" class="block text-sm font-medium text-sand">Booth type</label>
+              <!-- TODO(client): the form offers Glambot (Manual) and Glambot (Automatic) but
+                   pricing lists one Glambot. Kept both here until the client confirms. -->
+              <select id="booth" name="booth" class="field mt-2" required aria-describedby="booth-error">
+                <option value="">Choose one</option>
+                <option>Photo Booth</option>
+                <option>Audio Message Booth</option>
+                <option>360 Video Booth</option>
+                <option>360 Sky Booth</option>
+                <option>Glambot (Manual)</option>
+                <option>Glambot (Automatic)</option>
+              </select>
+              <p id="booth-error" class="mt-2 hidden text-sm text-gold" role="alert"></p>
+            </div>
+            <div>
+              <label for="event" class="block text-sm font-medium text-sand">Event type</label>
+              <select id="event" name="event" class="field mt-2" required aria-describedby="event-error">
+                <option value="">Choose one</option>
+                <option>Wedding</option>
+                <option>Birthday</option>
+                <option>Corporate event</option>
+                <option>School event / Prom</option>
+                <option>Other</option>
+              </select>
+              <p id="event-error" class="mt-2 hidden text-sm text-gold" role="alert"></p>
+            </div>
+            <!-- Shown only when event type is Other. -->
+            <div id="event-other-wrap" class="hidden sm:col-span-2">
+              <label for="event-other" class="block text-sm font-medium text-sand">Please specify</label>
+              <input id="event-other" name="event-other" type="text" class="field mt-2" aria-describedby="event-other-error">
+              <p id="event-other-error" class="mt-2 hidden text-sm text-gold" role="alert"></p>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="message" class="block text-sm font-medium text-sand">Anything else <span class="font-normal text-sand/60">(optional)</span></label>
+              <textarea id="message" name="message" rows="4" class="field mt-2" placeholder="Date, venue, guest count, what you have in mind"></textarea>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-4">
+            <button type="submit" class="btn-primary">Send enquiry</button>
+            <p class="text-xs tracking-[0.01em] text-sand/60">We only use these details to reply to you.</p>
+          </div>
+        </form>
+
+        <div id="enquiry-success" class="surface hidden p-8" role="status" tabindex="-1">
+          <p class="font-display text-2xl font-medium text-shell">Thanks, we have your enquiry</p>
+          <p id="enquiry-success-copy" class="mt-3 leading-relaxed text-sand/80"></p>
+          <p class="mt-4 text-xs tracking-[0.01em] text-sand/60">This demo does not send anything yet. The form handler is where a mail endpoint plugs in.</p>
+        </div>
+      </div>
+
+      <!-- ─── Details ─────────────────────────────────────────────────────── -->
+      <aside class="lg:col-span-5">
+        <div class="surface p-6 md:p-8">
+          <h2 class="font-display text-2xl font-medium text-shell">Reach us directly</h2>
+          <dl class="mt-6 space-y-5">
+            <div>
+              <dt class="text-xs font-medium tracking-[0.01em] text-sand/60">Phone</dt>
+              <dd class="mt-1"><a href="tel:+18008050920" class="link text-lg no-underline">1-800-805-0920</a></dd>
+            </div>
+            <div>
+              <dt class="text-xs font-medium tracking-[0.01em] text-sand/60">Email</dt>
+              <dd class="mt-1"><a href="mailto:hawaiibooths@gmail.com" class="link text-lg no-underline">hawaiibooths@gmail.com</a></dd>
+            </div>
+            <div>
+              <dt class="text-xs font-medium tracking-[0.01em] text-sand/60">Address</dt>
+              <dd class="mt-1">
+                <a href="https://maps.google.com/maps?q=2825+Ala+Ilima+St,+Honolulu,+HI+96818" target="_blank" rel="noopener" class="link no-underline">2825 Ala Ilima St<br>Honolulu, HI 96818</a>
+              </dd>
+            </div>
+            <div>
+              <dt class="text-xs font-medium tracking-[0.01em] text-sand/60">Hours</dt>
+              <!-- TODO(client): opening hours. -->
+              <dd class="mt-1 text-sand/80">To be confirmed</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="mt-4 overflow-hidden rounded-lg ring-1 ring-white/10">
+          <iframe
+            title="Map showing Hawaii Booths at 2825 Ala Ilima St, Honolulu"
+            src="https://maps.google.com/maps?q=2825+Ala+Ilima+St,+Honolulu,+HI+96818&z=15&output=embed"
+            width="600" height="360" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            class="block aspect-[5/3] h-auto w-full brightness-90"></iframe>
+        </div>
+
+        <p class="mt-6 text-sm leading-relaxed tracking-[0.01em] text-sand/70">Already know your date? <a href="calendar.html" class="link">Check it on the calendar</a> and we will confirm from there.</p>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<hb-footer>
+  <noscript>
+    <nav aria-label="Site" class="mx-auto max-w-6xl px-6 py-12">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="photo-booths.html">Photo booths</a></li>
+        <li><a href="video-booths.html">Video booths</a></li>
+        <li><a href="audio-booths.html">Audio guest book</a></li>
+        <li><a href="services.html">Slideshow service</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="try-it-out.html">Try the booth</a></li>
+      </ul>
+    </nav>
+  </noscript>
+</hb-footer>
+
+<script>
+(() => {
+  const form = document.getElementById('enquiry-form');
+  const success = document.getElementById('enquiry-success');
+  const successCopy = document.getElementById('enquiry-success-copy');
+  const eventSelect = document.getElementById('event');
+  const otherWrap = document.getElementById('event-other-wrap');
+  const otherInput = document.getElementById('event-other');
+
+  // ── Conditional field ─────────────────────────────────────────────────────
+  function syncOther() {
+    const isOther = eventSelect.value === 'Other';
+    otherWrap.classList.toggle('hidden', !isOther);
+    otherInput.required = isOther;
+    if (!isOther) { otherInput.value = ''; clearError(otherInput); }
+  }
+  eventSelect.addEventListener('change', syncOther);
+  syncOther();
+
+  // ── Rules: each returns '' when valid or a message that says what to fix ──
+  const RULES = {
+    name:  (v) => (v.trim().length >= 2 ? '' : 'Enter your full name.'),
+    email: (v) => (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? '' : 'Enter an email address like name@example.com.'),
+    phone: (v) => {
+      const t = v.trim();
+      if (!t) return 'Enter a phone number.';
+      if (!/^[+\d\s().-]+$/.test(t)) return 'Use digits, spaces, dashes or brackets only.';
+      if (t.replace(/\D/g, '').length < 7) return 'Enter a phone number with at least 7 digits.';
+      return '';
+    },
+    booth: (v) => (v ? '' : 'Choose a booth type.'),
+    event: (v) => (v ? '' : 'Choose an event type.'),
+    'event-other': (v) => (eventSelect.value !== 'Other' || v.trim() ? '' : 'Tell us what kind of event it is.'),
+  };
+
+  // Errors are tied to their inputs with aria-describedby (set in the markup)
+  // and aria-invalid; the error colour is gold because it is the palette's only
+  // warm high-contrast colour, and the message text carries the meaning.
+  function setError(input, message) {
+    const err = document.getElementById(`${input.id}-error`);
+    err.textContent = message;
+    err.classList.remove('hidden');
+    input.setAttribute('aria-invalid', 'true');
+    input.classList.add('ring-gold');
+  }
+  function clearError(input) {
+    const err = document.getElementById(`${input.id}-error`);
+    if (!err) return;
+    err.textContent = '';
+    err.classList.add('hidden');
+    input.removeAttribute('aria-invalid');
+    input.classList.remove('ring-gold');
+  }
+  function validate(input) {
+    const rule = RULES[input.name];
+    if (!rule) return true;
+    const message = rule(input.value);
+    if (message) setError(input, message); else clearError(input);
+    return !message;
+  }
+
+  // Validate on blur from the start, and live after the first submit attempt.
+  let submitted = false;
+  form.addEventListener('focusout', (e) => { if (RULES[e.target.name] && e.target.value) validate(e.target); });
+  form.addEventListener('input', (e) => { if (submitted) validate(e.target); });
+  form.addEventListener('change', (e) => { if (submitted) validate(e.target); });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitted = true;
+    const inputs = [...form.querySelectorAll('input, select')].filter((i) => RULES[i.name] && !i.closest('.hidden'));
+    const firstInvalid = inputs.map((i) => (validate(i) ? null : i)).find(Boolean);
+    if (firstInvalid) { firstInvalid.focus(); return; }
+
+    // TODO: send the enquiry here, e.g.
+    //   await fetch('https://formspree.io/f/XXXX', { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+    // and show the success state on a 2xx response. For now the form only validates.
+    const data = new FormData(form);
+    const eventLabel = data.get('event') === 'Other' ? data.get('event-other').trim() : data.get('event').toLowerCase();
+    successCopy.textContent = `We will reply to ${data.get('email').trim()} about a ${data.get('booth')} for your ${eventLabel}. If it is urgent, call 1-800-805-0920.`;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+    success.focus();
+  });
+})();
+</script>
+
+</body>
+</html>

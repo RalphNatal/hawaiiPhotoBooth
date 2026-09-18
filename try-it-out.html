@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Try It Out | Hawaii Booths</title>
+  <meta name="description" content="Try the Hawaii Booths photo booth from your browser: start your camera, choose a frame, take a photo and watch it print. Everything runs on your device; nothing is uploaded or stored.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Try the booth from your browser | Hawaii Booths">
+  <meta property="og:description" content="Start your camera, choose a frame, take a photo and watch it print. Nothing leaves your device.">
+  <meta property="og:image" content="https://picsum.photos/seed/hawaii-hero/1200/1500">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 15 18%27%3E%3Crect x=%27.75%27 y=%27.75%27 width=%2713.5%27 height=%2716.5%27 rx=%272%27 fill=%27none%27 stroke=%27%23D9A441%27 stroke-width=%271.5%27/%3E%3Crect x=%273.5%27 y=%273.5%27 width=%278%27 height=%277.5%27 rx=%271%27 fill=%27%23D9A441%27 fill-opacity=%27.35%27/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script src="assets/js/head.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script defer src="assets/js/shell.js"></script>
+  <script defer src="assets/js/booth.js"></script>
+</head>
+<body class="bg-abyss font-sans text-sand antialiased">
+
+<hb-nav active="try-it-out"></hb-nav>
+
+<main id="main">
+
+  <!-- ─── Intro, on abyss, so the step up into the booth section is visible ── -->
+  <section class="mx-auto max-w-6xl px-6 pb-12 pt-20 md:pb-16 md:pt-28">
+    <h1 class="max-w-[18ch] font-display text-4xl font-medium leading-[1.08] text-shell md:text-6xl">Try the booth from your browser</h1>
+    <p class="mt-6 max-w-[52ch] text-lg leading-relaxed text-sand/80 md:text-xl">Start your camera, choose a frame, take a photo and watch it print. Everything happens on your device.</p>
+  </section>
+
+  <!-- ─── The booth: section steps up to ink, the stage steps up again to ocean.
+       On a dark page the focal point is the lightest region. ──────────────── -->
+  <section class="bg-ink" aria-labelledby="booth-heading">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-24">
+      <h2 id="booth-heading" class="sr-only">The booth</h2>
+
+      <div class="relative overflow-hidden rounded-2xl bg-ocean p-5 ring-1 ring-white/10 sm:p-8 md:p-10">
+        <!-- The site's one permitted gradient: a soft spotlight over the preview,
+             read as a light source rather than decoration. -->
+        <div class="pointer-events-none absolute -left-[10%] -top-[30%] aspect-square w-[70%] rounded-full bg-[radial-gradient(closest-side,theme(colors.surf/8%),transparent)]" aria-hidden="true"></div>
+
+        <div class="relative grid gap-8 lg:grid-cols-12 lg:gap-12">
+
+          <!-- Live preview -->
+          <div class="lg:col-span-6">
+            <div id="preview" class="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-abyss ring-1 ring-surf/30">
+              <!-- Mirrored so the preview behaves like a mirror. The frame overlay
+                   on top is NOT mirrored, or its wordmark would read backwards. -->
+              <video id="video" autoplay muted playsinline class="absolute inset-0 h-full w-full -scale-x-100 object-cover"></video>
+              <img id="frame-overlay" width="1080" height="1350" alt="" draggable="false" class="pointer-events-none absolute inset-0 h-full w-full select-none">
+              <img id="shot" width="1080" height="1350" alt="Your photo with the selected frame" class="absolute inset-0 hidden h-full w-full object-cover">
+              <div id="countdown" class="absolute inset-0 hidden items-center justify-center bg-abyss/30 font-display text-[9rem] leading-none text-shell" aria-live="assertive" aria-atomic="true"></div>
+              <!-- The capture flash: the only opaque white on the site, held at 0.7. -->
+              <div id="flash" class="pointer-events-none absolute inset-0 bg-white opacity-0" aria-hidden="true"></div>
+              <div id="preview-message" class="absolute inset-0 flex items-center justify-center p-8 text-center" role="status" aria-live="polite">
+                <p class="max-w-[30ch] text-sm leading-relaxed tracking-[0.01em] text-sand/80">Press Start camera. Your browser will ask for permission first.</p>
+              </div>
+            </div>
+            <p class="mt-4 text-xs leading-relaxed tracking-[0.01em] text-sand/70">Your camera runs entirely in your browser. The microphone is never used. Nothing is uploaded, stored, or sent anywhere.</p>
+          </div>
+
+          <!-- Controls -->
+          <div class="flex flex-col lg:col-span-6">
+            <p id="frames-label" class="text-sm font-medium text-sand">Choose a frame</p>
+            <div id="frames" role="radiogroup" aria-labelledby="frames-label" class="mt-3 flex flex-wrap gap-3"></div>
+
+            <div class="mt-6">
+              <label for="frame-upload" class="btn-ghost cursor-pointer focus-within:ring-2 focus-within:ring-surf focus-within:ring-offset-2 focus-within:ring-offset-ocean">
+                <span id="frame-upload-label">Use your own frame</span>
+                <input type="file" id="frame-upload" accept="image/png,image/svg+xml" class="sr-only">
+              </label>
+              <p class="mt-3 max-w-[48ch] text-xs leading-relaxed tracking-[0.01em] text-sand/60">A PNG or SVG with a transparent centre, 4:5 (1080 by 1350). It stays in this tab only and is gone when you close the page.</p>
+              <p id="upload-note" class="mt-2 hidden max-w-[48ch] text-xs leading-relaxed tracking-[0.01em] text-gold" role="status"></p>
+            </div>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <button type="button" id="start" class="btn-primary focus-visible:ring-offset-ocean">Start camera</button>
+              <button type="button" id="shoot" class="btn-primary hidden focus-visible:ring-offset-ocean">Take photo</button>
+              <button type="button" id="retake" class="btn-ghost hidden focus-visible:ring-offset-ocean">Retake</button>
+              <a id="save" download="hawaii-booths.jpg" class="btn-primary hidden focus-visible:ring-offset-ocean">Save photo</a>
+            </div>
+            <p class="mt-4">
+              <button type="button" id="watch-print" class="link hidden text-sm focus-visible:ring-offset-ocean">Watch it print</button>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Printer ─────────────────────────────────────────────────────── -->
+      <div class="mt-16 md:mt-24" aria-labelledby="print-heading">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 id="print-heading" class="font-display text-3xl font-medium leading-[1.15] text-shell md:text-[2.5rem]">Watch it print</h2>
+          <p id="print-copy" class="mt-4 text-sand/80">Take a photo, then scroll. The print follows you down the page.</p>
+        </div>
+
+        <!-- Not position:sticky — the progress maths reads this element's
+             position in the viewport, and a stuck element's rect stops changing. -->
+        <div id="printer-stage" class="relative mx-auto mt-12 h-[30rem] w-full max-w-[26rem]">
+          <!-- The mask clips everything below the slot line, so the photo appears to
+               emerge from the slot rather than slide over the printer. -->
+          <div id="photo-mask" class="absolute inset-x-0 bottom-[132px] top-0 flex items-end justify-center overflow-hidden">
+            <!-- The one shadow on the site: the paper is genuinely in front of the printer. -->
+            <img id="printed-photo" width="1080" height="1350" alt="Your printed photo" class="hidden w-[62%] origin-bottom will-change-transform rounded-sm ring-1 ring-white/15 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)]">
+          </div>
+          <!-- Chassis: ocean fill, surf stroke, ink slot. Colours via fill-/stroke-
+               utilities so they follow the tokens. Slot is 284 of 420 units ≈ 281px
+               rendered; the paper is 62% of 416px ≈ 258px (≈266px with its 1.5° curl). Paper narrower than slot. -->
+          <svg id="printer-body" viewBox="0 0 420 160" preserveAspectRatio="xMidYMax meet" class="absolute bottom-0 left-0 h-[160px] w-full" role="img" aria-label="A photo printer">
+            <rect x="10" y="20" width="400" height="130" rx="14" class="fill-ocean stroke-surf" stroke-width="1.5"/>
+            <rect x="68" y="24" width="284" height="10" rx="3" class="fill-ink"/>
+            <rect x="30" y="52" width="360" height="1" class="fill-white/10"/>
+            <text x="210" y="106" text-anchor="middle" font-size="15" class="fill-sand font-display">Hawaii Booths</text>
+            <circle cx="384" cy="102" r="4" class="fill-gold"/>
+            <rect x="40" y="150" width="60" height="6" rx="2" class="fill-reef"/>
+            <rect x="320" y="150" width="60" height="6" rx="2" class="fill-reef"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA, back on abyss ───────────────────────────────────────────────── -->
+  <section class="mx-auto max-w-6xl px-6 py-24 md:py-32" aria-labelledby="cta-heading">
+    <div class="grid items-center gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <h2 id="cta-heading" class="font-display text-3xl font-medium leading-[1.15] text-shell md:text-[2.5rem]">Ready for the real thing?</h2>
+        <p class="mt-5 max-w-[52ch] text-lg leading-relaxed text-sand/80">The real booth prints in seconds, comes with an attendant, and sends every guest home with their photos. Packages start at $300.</p>
+      </div>
+      <div class="flex flex-wrap gap-4 lg:col-span-5 lg:justify-end">
+        <a href="pricing.html" class="btn-primary">See pricing</a>
+        <a href="calendar.html" class="btn-ghost">Check your date</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<hb-footer>
+  <noscript>
+    <nav aria-label="Site" class="mx-auto max-w-6xl px-6 py-12">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="photo-booths.html">Photo booths</a></li>
+        <li><a href="video-booths.html">Video booths</a></li>
+        <li><a href="audio-booths.html">Audio guest book</a></li>
+        <li><a href="services.html">Slideshow service</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="try-it-out.html">Try the booth</a></li>
+      </ul>
+    </nav>
+    <p class="mx-auto max-w-6xl px-6 pb-12 text-sm">The booth needs JavaScript to use your camera.</p>
+  </noscript>
+</hb-footer>
+
+</body>
+</html>

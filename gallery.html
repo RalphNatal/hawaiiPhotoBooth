@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery | Hawaii Booths</title>
+  <meta name="description" content="Photos from weddings, corporate events, birthdays and school events with Hawaii Booths' photo, video and audio booths.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gallery | Hawaii Booths">
+  <meta property="og:description" content="Photos from weddings, corporate events, birthdays and school events with Hawaii Booths.">
+  <meta property="og:image" content="https://picsum.photos/seed/hb-g1/1200/1500">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 15 18%27%3E%3Crect x=%27.75%27 y=%27.75%27 width=%2713.5%27 height=%2716.5%27 rx=%272%27 fill=%27none%27 stroke=%27%23D9A441%27 stroke-width=%271.5%27/%3E%3Crect x=%273.5%27 y=%273.5%27 width=%278%27 height=%277.5%27 rx=%271%27 fill=%27%23D9A441%27 fill-opacity=%27.35%27/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script src="assets/js/head.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script defer src="assets/js/shell.js"></script>
+</head>
+<body class="bg-abyss font-sans text-sand antialiased">
+
+<hb-nav active="gallery"></hb-nav>
+
+<main id="main">
+
+  <section class="mx-auto max-w-6xl px-6 pb-12 pt-20 md:pt-28">
+    <h1 class="max-w-[18ch] font-display text-4xl font-medium leading-[1.08] text-shell md:text-6xl">From the booth</h1>
+    <p class="mt-6 max-w-[52ch] text-lg leading-relaxed text-sand/80 md:text-xl">A few of the moments guests have made. Filter by the kind of event, or open any photo to see it larger.</p>
+
+    <!-- Filter chips: a plain class toggle, no library. -->
+    <div class="mt-10 flex flex-wrap gap-2" role="group" aria-label="Filter by event type">
+      <button type="button" data-filter="all" aria-pressed="true"
+              class="rounded-full border border-white/15 px-4 py-2 text-sm font-medium tracking-[0.01em] text-sand/80 transition-colors hover:text-sand aria-pressed:border-gold aria-pressed:bg-gold aria-pressed:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss">All</button>
+      <button type="button" data-filter="wedding" aria-pressed="false"
+              class="rounded-full border border-white/15 px-4 py-2 text-sm font-medium tracking-[0.01em] text-sand/80 transition-colors hover:text-sand aria-pressed:border-gold aria-pressed:bg-gold aria-pressed:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss">Weddings</button>
+      <button type="button" data-filter="corporate" aria-pressed="false"
+              class="rounded-full border border-white/15 px-4 py-2 text-sm font-medium tracking-[0.01em] text-sand/80 transition-colors hover:text-sand aria-pressed:border-gold aria-pressed:bg-gold aria-pressed:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss">Corporate</button>
+      <button type="button" data-filter="birthday" aria-pressed="false"
+              class="rounded-full border border-white/15 px-4 py-2 text-sm font-medium tracking-[0.01em] text-sand/80 transition-colors hover:text-sand aria-pressed:border-gold aria-pressed:bg-gold aria-pressed:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss">Birthdays</button>
+      <button type="button" data-filter="school" aria-pressed="false"
+              class="rounded-full border border-white/15 px-4 py-2 text-sm font-medium tracking-[0.01em] text-sand/80 transition-colors hover:text-sand aria-pressed:border-gold aria-pressed:bg-gold aria-pressed:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss">School events</button>
+    </div>
+    <p id="filter-status" class="sr-only" aria-live="polite"></p>
+  </section>
+
+  <!-- TODO(client): replace the twelve placeholders with real event photos in assets/img/,
+       keeping width/height attributes accurate so the masonry doesn't reflow on load. -->
+  <section class="mx-auto max-w-6xl px-6 pb-24 md:pb-32" aria-label="Event photos">
+    <div id="gallery" class="columns-2 gap-4 md:columns-3">
+
+      <figure class="mb-4 break-inside-avoid" data-category="wedding">
+        <button type="button" class="group block w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" data-full="https://picsum.photos/seed/hb-g1/1600/2000" aria-label="Open photo: Wedding, Kāneʻohe">
+          <img src="https://picsum.photos/seed/hb-g1/800/1000" width="800" height="1000" loading="lazy" alt="A couple in the photo booth with their wedding party crowding in behind them" class="w-full rounded-lg brightness-90 ring-1 ring-white/10 transition group-hover:brightness-100">
+        </button>
+        <figcaption class="mt-2 text-xs tracking-[0.01em] text-sand/60">Wedding, Kāneʻohe</figcaption>
+      </figure>
+
+      <figure class="mb-4 break-inside-avoid" data-category="corporate">
+        <button type="button" class="group block w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" data-full="https://picsum.photos/seed/hb-g2/1600/1200" aria-label="Open photo: Corporate event, Downtown Honolulu">
+          <img src="https://picsum.photos/seed/hb-g2/800/600" width="800" height="600" loading="lazy" alt="Colleagues holding branded props in front of a step-and-repeat backdrop" class="w-full rounded-lg brightness-90 ring-1 ring-white/10 transition group-hover:brightness-100">
+        </button>
+        <figcaption class="mt-2 text-xs tracking-[0.01em] text-sand/60">Corporate event, Downtown Honolulu</figcaption>
+      </figure>
+
+      <figure class="mb-4 break-inside-avoid" data-category="birthday">
+        <button type="button" class="group block w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" data-full="https://picsum.photos/seed/hb-g3/1600/2000" aria-label="Open photo: Fortieth birthday, Kailua">
+          <img src="https://picsum.photos/seed/hb-g3/800/1000" width="800" height="1000" loading="lazy" alt="Friends mid-spin on the 360 booth platform under string lights" class="w-full rounded-lg brightness-90 ring-1 ring-white/10 transition group-hover:brightness-100">
+        </button>
+        <figcaption class="mt-2 text-xs tracking-[0.01em] text-sand/60">Fortieth birthday, Kailua</figcaption>
+      </figure>
+
+      <figure class="mb-4 break-inside-avoid" data-category="school">
+        <button type="button" class="group block w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" data-full="https://picsum.photos/seed/hb-g4/1600/1400" aria-label="Open photo: Prom, Pearl City">
+          <img src="https://picsum.photos/seed/hb-g4/800/700" width="800" height="700" loading="lazy" alt="Students in formal wear posing with oversized sunglasses" class="w-full rounded-lg brightness-90 ring-1 ring-white/10 transition group-hover:brightness-100">
+        </button>
+        <figcaption class="mt-2 text-xs tracking-[0.01em] text-sand/60">Prom, Pearl City</figcaption>
+      </figure>
+
+      <figure class="mb-4 break-inside-avoid" data-category="wedding">
+        <button type="button" class="group block w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" data-full="https://picsum.photos/seed/hb-g5/1600/2200" aria-label="Open photo: Wedding, Waimānalo">
+          <img src="https://picsum.photos/seed/hb-g5/800/1100" width="800" height="1100" loading="lazy" alt="A guest leaving a message on the audio guest book handset" class="w-full rounded-lg brightness-90 ring-1 ring-white/10 transition group-hover:brightness-100">
+        </button>
+        <figcaption class="mt-2 text-xs tracking-[0.01em] text-sand/60">Wedding, Waimānalo</figcaption>
+      </figure>
+
+      <figure class="mb-4 break-inside-avoid" data-category="corporate">
+        <button type="button" class="group block w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" data-full="https://picsum.photos/seed/hb-g6/1600/1600" aria-label="Open photo: Product launch, Kakaʻako">
+          <img src="https://picsum.photos/seed/hb-g6/800/800" width="800" height="800" loading="lazy" alt="The Glambot arm sweeping past a guest at a product launch" class="w-full rounded-lg brightness-90 ring-1 ring-white/10 transition group-hover:brightness-100">
+        </button>
+        <figcaption class="mt-2 text-xs tracking-[0.01em] text-sand/60">Product launch, Kakaʻako</figcaption>
+      </figure>
+
+      <figure class="mb-4 break-inside-avoid" data-category="birthday">
+        <button type="button" class="group block w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" data-full="https://picsum.photos/seed/hb-g7/1600/1200" aria-label="Open photo: Sweet sixteen, Mililani">
+          <img src="https://picsum.photos/seed/hb-g7/800/600" width="800" height="600" loading="lazy" alt="A group of teenagers laughing at their print strip" class="w-full rounded-lg brightness-90 ring-1 ring-white/10 transition group-hover:brightness-100">
+        </button>
+        <figcaption class="mt-2 text-xs tracking-[0.01em] text-sand/60">Sweet sixteen, Mililani</figcaption>
+      </figure>
+
+      <figure class="mb-4 break-inside-avoid" data-category="wedding">
+        <button type="button" class="group block w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" data-full="https://picsum.photos/seed/hb-g8/1600/1800" aria-label="Open photo: Wedding, North Shore">
+          <img src="https://picsum.photos/seed/hb-g8/800/900" width="800" height="900" loading="lazy" alt="The wedding couple in the 360 Sky booth with the camera overhead" class="w-full rounded-lg brightness-90 ring-1 ring-white/10 transition group-hover:brightness-100">
+        </button>
+        <figcaption class="mt-2 text-xs tracking-[0.01em] text-sand/60">Wedding, North Shore</figcaption>
+      </figure>
+
+      <figure class="mb-4 break-inside-avoid" data-category="school">
+        <button type="button" class="group block w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" data-full="https://picsum.photos/seed/hb-g9/1600/2000" aria-label="Open photo: Graduation, Mānoa">
+          <img src="https://picsum.photos/seed/hb-g9/800/1000" width="800" height="1000" loading="lazy" alt="Graduates in caps and gowns crowding into the booth frame" class="w-full rounded-lg brightness-90 ring-1 ring-white/10 transition group-hover:brightness-100">
+        </button>
+        <figcaption class="mt-2 text-xs tracking-[0.01em] text-sand/60">Graduation, Mānoa</figcaption>
+      </figure>
+
+      <figure class="mb-4 break-inside-avoid" data-category="corporate">
+        <button type="button" class="group block w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" data-full="https://picsum.photos/seed/hb-g10/1600/2200" aria-label="Open photo: Holiday party, Waikīkī">
+          <img src="https://picsum.photos/seed/hb-g10/800/1100" width="800" height="1100" loading="lazy" alt="A team photo with everyone holding a letter to spell the company name" class="w-full rounded-lg brightness-90 ring-1 ring-white/10 transition group-hover:brightness-100">
+        </button>
+        <figcaption class="mt-2 text-xs tracking-[0.01em] text-sand/60">Holiday party, Waikīkī</figcaption>
+      </figure>
+
+      <figure class="mb-4 break-inside-avoid" data-category="birthday">
+        <button type="button" class="group block w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" data-full="https://picsum.photos/seed/hb-g11/1600/1600" aria-label="Open photo: First birthday, ʻAiea">
+          <img src="https://picsum.photos/seed/hb-g11/800/800" width="800" height="800" loading="lazy" alt="Three generations of one family squeezed into a single booth photo" class="w-full rounded-lg brightness-90 ring-1 ring-white/10 transition group-hover:brightness-100">
+        </button>
+        <figcaption class="mt-2 text-xs tracking-[0.01em] text-sand/60">First birthday, ʻAiea</figcaption>
+      </figure>
+
+      <figure class="mb-4 break-inside-avoid" data-category="wedding">
+        <button type="button" class="group block w-full rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" data-full="https://picsum.photos/seed/hb-g12/1600/1300" aria-label="Open photo: Wedding, Hawaiʻi Kai">
+          <img src="https://picsum.photos/seed/hb-g12/800/650" width="800" height="650" loading="lazy" alt="Guests lined up along the backdrop waiting for the countdown" class="w-full rounded-lg brightness-90 ring-1 ring-white/10 transition group-hover:brightness-100">
+        </button>
+        <figcaption class="mt-2 text-xs tracking-[0.01em] text-sand/60">Wedding, Hawaiʻi Kai</figcaption>
+      </figure>
+
+    </div>
+    <p id="gallery-empty" class="hidden py-16 text-center text-sand/70">No photos in this category yet.</p>
+  </section>
+
+</main>
+
+<!-- ─── Lightbox: dependency-free. Lives outside <main> so the rest of the page
+     can be made inert while it is open. ───────────────────────────────────── -->
+<div id="lightbox" class="fixed inset-0 z-50 hidden bg-abyss/95 p-4 md:p-8" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div id="lightbox-backdrop" class="absolute inset-0"></div>
+  <div class="relative mx-auto flex h-full max-w-6xl flex-col">
+    <div class="flex items-center justify-between gap-4">
+      <p id="lightbox-caption" class="text-sm tracking-[0.01em] text-sand/80"></p>
+      <button type="button" id="lightbox-close" class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-sand transition-colors hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surf focus-visible:ring-offset-2 focus-visible:ring-offset-abyss" aria-label="Close">
+        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="relative mt-4 flex min-h-0 flex-1 items-center justify-center">
+      <img id="lightbox-image" src="" alt="" class="max-h-full max-w-full rounded-lg object-contain ring-1 ring-white/15">
+    </div>
+    <div class="mt-4 flex items-center justify-between">
+      <button type="button" id="lightbox-prev" class="btn-ghost !px-4" aria-label="Previous photo">Previous</button>
+      <p id="lightbox-count" class="text-xs tracking-[0.01em] text-sand/60"></p>
+      <button type="button" id="lightbox-next" class="btn-ghost !px-4" aria-label="Next photo">Next</button>
+    </div>
+  </div>
+</div>
+
+<hb-footer>
+  <noscript>
+    <nav aria-label="Site" class="mx-auto max-w-6xl px-6 py-12">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="photo-booths.html">Photo booths</a></li>
+        <li><a href="video-booths.html">Video booths</a></li>
+        <li><a href="audio-booths.html">Audio guest book</a></li>
+        <li><a href="services.html">Slideshow service</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="try-it-out.html">Try the booth</a></li>
+      </ul>
+    </nav>
+  </noscript>
+</hb-footer>
+
+<script>
+(() => {
+  // ── Filter ────────────────────────────────────────────────────────────────
+  const chips = [...document.querySelectorAll('[data-filter]')];
+  const figures = [...document.querySelectorAll('#gallery figure')];
+  const status = document.getElementById('filter-status');
+  const empty = document.getElementById('gallery-empty');
+
+  function applyFilter(key) {
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.filter === key)));
+    let shown = 0;
+    figures.forEach((f) => {
+      const show = key === 'all' || f.dataset.category === key;
+      f.classList.toggle('hidden', !show);
+      if (show) shown++;
+    });
+    empty.classList.toggle('hidden', shown > 0);
+    const NOUN = { wedding: 'wedding', corporate: 'corporate event', birthday: 'birthday', school: 'school event' };
+    status.textContent = key === 'all' ? `Showing all ${shown} photos` : `Showing ${shown} ${NOUN[key]} photo${shown === 1 ? '' : 's'}`;
+  }
+  chips.forEach((c) => c.addEventListener('click', () => applyFilter(c.dataset.filter)));
+
+  // ── Lightbox ──────────────────────────────────────────────────────────────
+  const box = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-image');
+  const caption = document.getElementById('lightbox-caption');
+  const count = document.getElementById('lightbox-count');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+  const backdrop = document.getElementById('lightbox-backdrop');
+  const outside = () => [...document.querySelectorAll('hb-nav, main, hb-footer')];
+
+  let items = [];      // the currently visible figures, in order
+  let index = -1;
+  let trigger = null;  // the button that opened the lightbox; focus returns here
+
+  function show(i) {
+    index = (i + items.length) % items.length;
+    const fig = items[index];
+    const btn = fig.querySelector('button');
+    const thumb = fig.querySelector('img');
+    img.src = btn.dataset.full;
+    img.alt = thumb.alt;
+    caption.textContent = fig.querySelector('figcaption').textContent;
+    count.textContent = `${index + 1} of ${items.length}`;
+  }
+
+  function open(fig, btn) {
+    items = figures.filter((f) => !f.classList.contains('hidden'));
+    trigger = btn;
+    show(items.indexOf(fig));
+    box.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+    // Modal: the rest of the page is inert while it is open. This is the one
+    // place on the site where a focus trap is correct.
+    outside().forEach((el) => { el.inert = true; });
+    closeBtn.focus();
+  }
+
+  function close() {
+    box.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+    outside().forEach((el) => { el.inert = false; });
+    img.src = '';
+    if (trigger) trigger.focus();
+  }
+
+  figures.forEach((fig) => {
+    const btn = fig.querySelector('button');
+    btn.addEventListener('click', () => open(fig, btn));
+  });
+  closeBtn.addEventListener('click', close);
+  backdrop.addEventListener('click', close);
+  prevBtn.addEventListener('click', () => show(index - 1));
+  nextBtn.addEventListener('click', () => show(index + 1));
+
+  box.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); return; }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); return; }
+    if (e.key === 'Tab') {
+      // Belt and braces alongside `inert`: keep Tab inside the dialog in
+      // browsers that don't support the attribute.
+      const focusable = [closeBtn, prevBtn, nextBtn];
+      const i = focusable.indexOf(document.activeElement);
+      if (e.shiftKey && (i <= 0)) { e.preventDefault(); focusable.at(-1).focus(); }
+      else if (!e.shiftKey && i === focusable.length - 1) { e.preventDefault(); focusable[0].focus(); }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
